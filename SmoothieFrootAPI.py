@@ -1,3 +1,4 @@
+import streamlit as st
 import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon](https://my.smoothiefroot.com/api/fruit/watermelon)")  
 #st =(smoothiefroot_response.json())
