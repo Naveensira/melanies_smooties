@@ -4,7 +4,8 @@ from snowflake.snowpark.functions import col, when_matched
 from snowflake.snowpark.context import get_active_session
 
 # Get the current credentials session
-session = get_active_session()
+cnx=st.connection("snowflake")
+session=cnx.session()
 
 # Write directly to the app header
 st.title(":cup_with_straw: Pending Smoothie Orders :cup_with_straw:")
