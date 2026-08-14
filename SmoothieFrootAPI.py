@@ -13,22 +13,6 @@ session=cnx.session()
 # Write directly to the app
 st.title(f":cup_with_straw: Customize your smoothie! :cup_with_straw: {st.__version__}")
 st.write ("""Choose your fruits you want to custom Smoothie!""")
-#st.write(
-#  """Replace this example with your own code!
-#  **And if you're new to Streamlit,** check
-#  out our easy-to-follow guides at
-#  [docs.streamlit.io](https://docs.streamlit.io).
-#  """
-#)
-
-#import streamlit as st
-#option = st.selectbox(
-#    " What is your favorite fruits?",
-#    ("Banana", "Strawberries", "Peaches"),
-#)
-
-#st.write("Your favorite fruit is:", option)
-
 
 name_on_order = st.text_input("Name on Smoothie")
 st.write("The name on your smoothy will be", name_on_order)
@@ -56,9 +40,9 @@ if Ingredients_list:
     for fruit_chosen in Ingredients_list:
         Ingredients_string += fruit_chosen + ' '
 
-
-    #st.write(Ingredients_string)
-    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")  
+    st.subheader(fruit_chosen + ' Nutrition information')
+    # smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")  
+    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/"+fruit_chosen) 
     sf_df = st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
     
     my_insert_stmt = """ insert into smoothies.public.orders(name_on_order,ingredients)
